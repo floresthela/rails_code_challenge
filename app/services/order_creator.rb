@@ -2,7 +2,6 @@ class OrderCreator
   def self.call(params)
 
     # Create order
-    pp params
     @order = Order.find_or_create_by(source_order_id: params[:source_order_id]) do |o| 
       o.source_order_id = params[:source_order_id]
       o.date = params[:date]

@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe(ProductCreator) do
   describe ".call" do
     let(:region){ create(:region) }
-    let(:province){ create(:province, region: region) }
     let(:customer){ create(:customer, region: region) }
     let(:product_category){ create(:product_category) }
 
@@ -23,9 +22,9 @@ RSpec.describe(ProductCreator) do
         
         expect(new_product.name).to eql(params[:name])
         expect(new_product.container).to eql(params[:container])
-        expect(new_product.base_margin).to eql(params[:base_margin])
-        expect(new_product.unit_price).to eql(params[:unit_price])
-        expect(new_product.shipping_cost).to eql(params[:shipping_cost])
+        expect(new_product.base_margin.to_f).to eql(params[:base_margin])
+        expect(new_product.unit_price.to_f).to eql(params[:unit_price])
+        expect(new_product.shipping_cost.to_f).to eql(params[:shipping_cost])
         expect(new_product.product_category_id).to eql(product_category.id)
       end
     end
