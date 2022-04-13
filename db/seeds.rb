@@ -53,7 +53,6 @@ csv.each do |row|
     psc.product_category_id = product_category.id
   end
 
-  pp row["Unit Price"]
   # Call service to create Product
   product = ProductCreator.call({
     name: row["Product Name"],
@@ -63,9 +62,6 @@ csv.each do |row|
     shipping_cost: row["Shipping Cost"],
     product_category_id: product_category.id
   })
-  
-  pp product
-  pp product.unit_price
 
   # Call service to create Order
   order = OrderCreator.call({
