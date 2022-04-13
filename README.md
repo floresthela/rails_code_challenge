@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running the project locally
+Install dependencies
 
-Things you may want to cover:
+``` 
+$ bundle install 
+```
 
-* Ruby version
+It is necessary to have postgres running locally.
 
-* System dependencies
+Create db schema
 
-* Configuration
+```
+$ rake db:create db:migrate
+```
 
-* Database creation
+Run the seed file and seed the database from the csv file
 
-* Database initialization
+```
+$ rails db:seed
+```
 
-* How to run the test suite
+Start the project
+```
+$ rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running the project with Docker
+Commands to start the project with Docker
 
-* Deployment instructions
-
-* ...
+```
+$ docker-compose build
+$ docker-compose up
+```
