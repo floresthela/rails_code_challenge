@@ -1,12 +1,7 @@
 require 'csv'
 
 csv_uri = 'https://raw.githubusercontent.com/coba-ai/short_code_challenge/master/Superstore_sales.csv'
-
-# Use url to raw csv
 csv_text = URI.open(csv_uri).read.encode('UTF-8')
-
-# Use file stored on project
-# csv_text = File.read("#{Rails.root}/db/data_seed/Superstore_sales.csv").encode('UTF-8')
 
 # Custom converter for columns
 CSV::Converters[:custom] = lambda { |value, field_info|
@@ -87,5 +82,3 @@ csv.each do |row|
     priority: row["Order Priority"]
   })
 end
-
-pp "All orders were created..."
